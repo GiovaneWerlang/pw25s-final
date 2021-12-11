@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{base :: head('Home')}"></head>
+<body>
+<div th:replace="~{base :: header}"></div>
+
+<div class="container mt-3">
+    <div th:replace="~{base :: titulo('Novo Livro')}"></div>
+
+    <div class="card mt-3">
+
+        <form action="/livro/salvar" method="post" class="card-body" th:object="${livroSalvarDTO}">
+            <div class="form-group mb-2">
+                <label for="titulo">Título</label>
+                <input th:field="*{titulo}" th:errorclass="is-invalid" class="form-control"
+                       placeholder="Título do livro"/>
+                <small>Informe qual o titulo do livro.</small>
+                <div th:errors="*{titulo}" class="invalid-feedback"> Erros referentes ao título do livro</div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="valor">Valor</label>
+                <input th:field="*{valor}" th:errorclass="is-invalid" class="form-control"
+                       placeholder="Valor do livro"/>
+                <small>Informe o valor do livro.</small>
+                <div th:errors="*{valor}" class="invalid-feedback"> Erros referentes ao valor do livro</div>
+            </div>
+            <div class="mb-2 form-group">
+                <label for="urlImagem">Imagem</label>
+                <input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control"
+                       placeholder="Url da imagem"/>
+                <small>Insira a url de uma imagem com boa qualidade</small>
+                <div th:errors="*{urlImagem}" class="invalid-feedback"> Erros referentes à url da imagem</div>
+            </div>
+            <div class="mb-2 form-group">
+                <label for="descricao">Descrição</label>
+                <textarea th:field="*{descricao}" class="form-control"
+                          placeholder="Descrição do livro"></textarea>
+                <small>Descreva o livro</small>
+            </div>
+            <div class="mb-2 form-group">
+                <label for="nomeAutor">Autor</label>
+                <input th:field="*{nomeAutor}" class="form-control"
+                          placeholder="Nome do Autor"/>
+                <small>Informe o nome do autor</small>
+                    <div th:errors="*{nomeAutor}" class="invalid-feedback"> Erros referentes ao autor do livro</div>
+            </div>
+            <button class="btn btn-primary" type="submit">Concluir</button>
+        </form>
+    </div>
+
+</body>
+</html>

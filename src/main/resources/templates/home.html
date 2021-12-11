@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{base :: head('Home')}"></head>
+<body>
+<div th:replace="~{base :: header}"></div>
+
+<div class="container mt-3">
+  <div th:replace="~{base :: titulo('Meus Livros')}"></div>
+  <nav th:replace="~{base :: nav}"></nav>
+
+  <div class="card mb-3 border-info" th:each="livro: ${livros}">
+    <div class="card-header border-info card-titulo">
+      Título: <span th:text="${(livro.titulo)}">Texto</span>
+    </div>
+<!--    <div class="card-body row">-->
+<!--      <div class="col-12 col-sm-8 mb-3">-->
+<!--        <div class="row mb-1">-->
+<!--          <div class="col-md-5 mb-1">Título: <span th:text="${(livro.titulo)}">Texto</span></div>-->
+<!--          <div class="col-md-7">Valor: <span th:text="${#numbers.formatCurrency(livro.valor)}">R$ 200,00</span></div>-->
+<!--        </div>-->
+<!--        <div class="mb-1">Autor: <span th:text="${(livro.autor.nome)}">Texto</span></div>-->
+<!--        <div class="mb-1">Descrição: <textarea class="form-control" th:text="${(livro.descricao)}">Descrição sobre o livro</textarea></div>-->
+<!--      </div>-->
+<!--      <div class="col-12 col-sm-4">-->
+<!--        <img class="img-thumbnail" th:src="${livro.urlImagem}" src="">-->
+<!--      </div>-->
+    <div class="card-body row border-info card-texto">
+      <div class="col-12 col-sm-4">
+        <img class="img-thumbnail" th:src="${livro.urlImagem}" src="">
+      </div>
+      <div class="col-12 col-sm-8 mb-5">
+        <div class="mb-4">Descrição: <span th:text="${(livro.descricao)}">Descrição sobre o livro</span></div>
+        <div class="row mb-4">
+           <div class="col-md-7">Valor: <span th:text="${#numbers.formatCurrency(livro.valor)}">R$ 200,00</span></div>
+        </div>
+        <div class="mb-4">Autor: <span th:text="${(livro.autor.nome)}">Texto</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
